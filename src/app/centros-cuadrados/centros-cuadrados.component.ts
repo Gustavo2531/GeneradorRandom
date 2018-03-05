@@ -9,7 +9,7 @@ export class CentrosCuadradosComponent implements OnInit {
   showFlashMessage = false;
   flashMessageSuccess = true;
   flashMessage = '';
-
+  
   seedText = '';
   numbersToGenerateText = '';
 
@@ -72,5 +72,56 @@ export class CentrosCuadradosComponent implements OnInit {
     }
 
     this.onShowFlashMessage(this.numbersToGenerateNumber + ' Números generados con semilla: ' + this.seedNumber, true);
+  }
+
+  onGenerateChi(){
+    let kin= 1+ 3.222 * Math.log10(this.numbersToGenerateNumber);
+    let k= 1+ 3.222 * Math.log10(this.numbersToGenerateNumber);
+    let v= (kin-1);
+    let arreglados=this.generatedRandomNumbers;
+    arreglados.sort;
+    let max=arreglados[arreglados.length-1];
+    let m = max/kin;
+    let tablas: number[];
+    let fabs: number[];
+    let fersteorica:number[];
+    let fers:number[];
+    let final:number[];
+    for(let contador =1; contador<=kin; contador++){
+      tablas.push(kin*contador);
+      fabs.push(0);
+    }
+    for(let n =0; n<this.numbersToGenerateNumber; n++){
+      let r=false;
+      let count =0;
+      while(r==false&&count<kin){
+        if(arreglados[n]<=tablas[count]){
+            fabs[count]++;
+            r=true;
+        }else{
+          count++;
+        }
+      }
+    }
+    for(let n =0; n<kin; n++){
+      if(fabs[n]<5){
+        
+        for(let m =n-1; m<k; m++){
+          fabs[m] = fabs[m+1];
+        }
+        k=k-1;
+      }
+    }
+    for(let newn =0; newn<k; newn++){
+      fers.push(fabs[newn]/this.numbersToGenerateNumber);
+      if(newn==0){
+        fersteorica.push(fabs[newn]);
+      }else{
+        fersteorica.push(fabs[newn]-fabs[newn-1]);
+      } 
+      final.push(Math.pow(fersteorica[newn]-fers[newn],2)/fersteorica[newn]);
+    }
+
+   
   }
 }
