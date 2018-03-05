@@ -1,0 +1,77 @@
+<!-- Flash messages -->
+<div class="row">
+  <app-flash-message
+    *ngIf="showFlashMessage"
+    (close)="showFlashMessage = false"
+    [flashMessage]="flashMessage"
+    [alertSuccess]="flashMessageSuccess">
+  </app-flash-message>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h1>
+      Método Congruencial Mixto
+    </h1>
+  </div>
+  <div class="col-xs-12">
+    <h4>El generador congruencial mixto tiene periodo completo si y sólo si</h4>
+  </div>
+  <div class="col-xs-12">
+    <ul>
+      <li><p>Sean <span>c</span> y <span>m</span> primos relativos (el entero positivo que divide <span>c</span> y <span>m</span> es 1)</p></li>
+      <li><p>Si <span>q</span> es un número primo que divide a <span>m</span>; entonces, <span>q</span> divide a <span>(a-1)</span></p></li>
+      <li><p>Si 4 divide a <span>m</span>; entonces, 4 divide a <span>(a-1)</span>.</p></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Form -->
+<div class="row">
+  <div class="form-group">
+    <label for="inputSemillaCM">Semilla</label>
+    <input type="text" class="form-control" id="inputSemillaCM" aria-describedby="inputSemillaCMHelp"
+           placeholder="Escriba la semilla" [(ngModel)]="seedText">
+    <small id="inputSemillaCMHelp" class="form-text text-muted">La semilla debe ser mayor o igual a 1.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="inputAValueCM">Valor de 'a'</label>
+    <input type="text" class="form-control" id="inputAValueCM" aria-describedby="inputAValueCMHelp"
+           placeholder="Escriba el valor de 'a'" [(ngModel)]="valueAText">
+    <small id="inputAValueCMHelp" class="form-text text-muted">'a' se refiere al multiplicador. Debe ser igual o mayor a 1.</small>
+  </div>
+  <div class="form-group">
+    <label for="inputCValueCM">Valor de 'c'</label>
+    <input type="text" class="form-control" id="inputCValueCM" aria-describedby="inputCValueCMHelp"
+           placeholder="Escriba el valor de 'c'" [(ngModel)]="valueCText">
+    <small id="inputCMValueCHelp" class="form-text text-muted">'c' se refiere al incremento. Debe ser igual o mayor a 1.</small>
+  </div>
+  <div class="form-group">
+    <label for="inputModValueCM">Valor del módulo</label>
+    <input type="text" class="form-control" id="inputModValueCM" aria-describedby="inputModValueCMHelp"
+           placeholder="Escriba el valor del modulo" [(ngModel)]="modText">
+    <small id="inputModValueCMHelp" class="form-text text-muted">El valor del módulo debe estar entre 1 y 1000.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="inputNumbersCM">Números a generar</label>
+    <input type="text" class="form-control" id="inputNumbersCM" aria-describedby="inputNumbersCMHelp"
+           placeholder="Escriba cúantos números desea generar" [(ngModel)]="numbersToGenerateText">
+    <small id="inputNumbersCMHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
+  </div>
+  <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+</div>
+
+<hr>
+
+<!-- Random numbers result -->
+<div class="row" *ngIf="flashMessageSuccess && showFlashMessage">
+  <div class="jumbotron">
+    <h3 class="display-3">Números generados:</h3>
+    <hr>
+    <div *ngFor="let rand of generatedRandomNumbers;  let i = index">
+      <h5>X{{ i + 1 }}: {{ rand }}</h5>
+    </div>
+  </div>
+</div>

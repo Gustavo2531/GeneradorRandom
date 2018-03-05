@@ -1,0 +1,59 @@
+<!-- Flash messages -->
+<div class="row">
+  <app-flash-message
+    *ngIf="showFlashMessage"
+    (close)="showFlashMessage = false"
+    [flashMessage]="flashMessage"
+    [alertSuccess]="flashMessageSuccess">
+  </app-flash-message>
+</div>
+
+<div class="row">
+  <h1>
+    Generador Multiplicativo
+  </h1>
+</div>
+
+<!-- Form -->
+<div class="row">
+  <div class="form-group">
+    <label for="inputSemillaGM">Semilla</label>
+    <input type="text" class="form-control" id="inputSemillaGM" aria-describedby="inputSemillaGMHelp"
+           placeholder="Escriba la semilla" [(ngModel)]="seedText">
+    <small id="inputSemillaGMHelp" class="form-text text-muted">La semilla debe ser mayor o igual a 1.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="inputAValueGM">Valor de 'a'</label>
+    <input type="text" class="form-control" id="inputAValueGM" aria-describedby="inputAValueGMHelp"
+           placeholder="Escriba el valor de 'a'" [(ngModel)]="valueAText">
+    <small id="inputAValueGMHelp" class="form-text text-muted">'a' se refiere al multiplicador. Debe ser igual o mayor a 1.</small>
+  </div>
+  <div class="form-group">
+    <label for="inputModValueGM">Valor del módulo</label>
+    <input type="text" class="form-control" id="inputModValueGM" aria-describedby="inputModValueGMHelp"
+           placeholder="Escriba el valor del modulo" [(ngModel)]="modText">
+    <small id="inputModValueGMHelp" class="form-text text-muted">El valor del módulo debe ser mayor o igual a 1 y ser estrictamente mayor que 'a' y la semilla..</small>
+  </div>
+
+  <div class="form-group">
+    <label for="inputNumbersC">Números a generar</label>
+    <input type="text" class="form-control" id="inputNumbersC" aria-describedby="inputNumbersCHelp"
+           placeholder="Escriba cúantos números desea generar" [(ngModel)]="numbersToGenerateText">
+    <small id="inputNumbersCHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
+  </div>
+  <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+</div>
+
+<hr>
+
+<!-- Random numbers result -->
+<div class="row" *ngIf="flashMessageSuccess && showFlashMessage">
+  <div class="jumbotron">
+    <h3 class="display-3">Números generados:</h3>
+    <hr>
+    <div *ngFor="let rand of generatedRandomNumbers;  let i = index">
+      <h5>X{{ i + 1 }}: {{ rand }}</h5>
+    </div>
+  </div>
+</div>

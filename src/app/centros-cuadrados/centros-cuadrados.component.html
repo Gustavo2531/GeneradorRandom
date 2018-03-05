@@ -1,0 +1,45 @@
+<!-- Flash messages -->
+<div class="row">
+  <app-flash-message
+    *ngIf="showFlashMessage"
+    (close)="showFlashMessage = false"
+    [flashMessage]="flashMessage"
+    [alertSuccess]="flashMessageSuccess">
+  </app-flash-message>
+</div>
+
+<div class="row">
+  <h1>
+    Método de los Centros Cuadrados
+  </h1>
+</div>
+
+<!-- Form -->
+<div class="row">
+  <div class="form-group">
+    <label for="inputSemillaCC">Semilla</label>
+    <input type="text" class="form-control" id="inputSemillaCC" aria-describedby="inputSemillaCCHelp"
+           placeholder="Escriba la semilla" [(ngModel)]="seedText">
+    <small id="inputSemillaCCHelp" class="form-text text-muted">La semilla debe ser de cuatro dígitos y ser mayor o igual a 1000.</small>
+  </div>
+  <div class="form-group">
+    <label for="inputNumbersCC">Números a generar</label>
+    <input type="text" class="form-control" id="inputNumbersCC" aria-describedby="inputNumbersCCHelp"
+           placeholder="Escriba cúantos números desea generar" [(ngModel)]="numbersToGenerateText">
+    <small id="inputNumbersCCHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
+  </div>
+  <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+</div>
+
+<hr>
+
+<!-- Random numbers result -->
+<div class="row" *ngIf="flashMessageSuccess && showFlashMessage">
+  <div class="jumbotron">
+    <h3 class="display-3">Números generados:</h3>
+    <hr>
+    <div *ngFor="let rand of generatedRandomNumbers;  let i = index">
+      <h5>X{{ i + 1 }}: {{ rand }}</h5>
+    </div>
+  </div>
+</div>
