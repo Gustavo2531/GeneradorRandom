@@ -29,6 +29,14 @@
     <small id="inputNumbersCCHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
   </div>
   <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+  <div class="form-group">
+      <label for="inputNumbersChi">Nivel de Signifancia</label>
+      <label for="inputNumbersChi2">5%</label>
+      <input type="radio" name="answer" value=0.05 [(ngModel)]="selected" id="inputNumbersChi2">
+      <label for="inputNumbersChi3">10%</label>
+      <input type="radio" name="answer" value=0.1 [(ngModel)]="selected"  id="inputNumbersChi3"> 
+    </div>
+  <button type="submit" class="btn btn-info" (click)="onGenerateChi()">Prueba Chi</button>
 </div>
 
 <hr>
@@ -43,3 +51,7 @@
     </div>
   </div>
 </div>
+
+
+
+
