@@ -232,5 +232,30 @@ export class CentrosCuadradosComponent implements OnInit {
    
   }
 
+  onGenerateKilmogorov(){
+    var arreglados=this.generatedRandomNumbers;
+    arreglados.sort();
+    let fe=1/arreglados.length;
+    let frec:number[]=[];
+    let f1:number[]=[];
+    let f2:number[]=[];
+    let f1max=0;
+    let f2max=0;
+    let f=0;
+    for(let i=0; i<arreglados.length;i++){
+      frec.push(fe*(i+1));
+      f1.push(Math.abs((fe*(i+1))-arreglados[i]));
+      f2.push(arreglados[i]-(fe*i));
+    }
+    f1.forEach(element => {
+      f1max=f1max+element;
+    });
+    f2.forEach(element => {
+      f2max=f2max+element;
+    });
+    if(f1max<f2max){
+      f=f2max;
+    }
 
+  }
 }
