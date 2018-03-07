@@ -11,17 +11,23 @@ export class CentrosCuadradosComponent implements OnInit {
   flashMessage = '';
   
   seedText = '';
-  numbersToGenerateText = '';
+  textByNumbers = '';
   chi: number[][] =[[3.8415, 5.9915,7.8147,9.4877,11.0705,12.5916,14.0671,15.5073,16.9190,
   18.3070,19.6752, 21.0261, 22.3620, 23.6848, 24.9958, 26.2962,27.5871, 28.8693, 30.1435, 
   31.4104, 32.6706],[2.7055, 4.6052, 6.2514, 7.7794, 9.2363,10.6446,12.0170, 13.3616, 14.6837, 15.9872, 12.2750, 18.5493,
   19.8119, 21.0641, 22.3071, 23.5418, 24.7690, 24.1555, 25.3289, 26.4976,27.662]]
   finalcompare:number=0;
   private seedNumber: number;
-  private numbersToGenerateNumber: number;
+  private generateNum: number;
   private selected:number;
+  private selectedSK:number;
+  private selectK:number;
+  kolsmir:number[][]=[[0.975,0.842,0.708,0.624,0.565,0.532,0.486,0.457,0.432,0.410,0.391,0.375,0.361,0.349,
+  0.338,0.328,0.318,0.309,0.301,0.294],
+  [0.950,0.776,0.642,0.564, 0.510, 0.470, 0.438,0.411, 0.388, 0.368, 0.352, 0.338, 0.325, 0.314, 0.304, 0.295,
+  0.286,0.278,0.272, 0.264]]
   generatedRandomNumbers: number[] = [];
-
+ 
   onShowFlashMessage(text: string, success: boolean) {
     this.flashMessage = text;
     this.flashMessageSuccess = success;
@@ -29,6 +35,7 @@ export class CentrosCuadradosComponent implements OnInit {
   }
 
   constructor() {
+   
   }
 
   ngOnInit() {
@@ -41,11 +48,11 @@ export class CentrosCuadradosComponent implements OnInit {
     if (regDigits.test(this.seedText.trim()) && reg.test(this.seedText.trim())
       && parseInt(this.seedText.trim(), 10) >= 1000
       && parseInt(this.seedText.trim(), 10) <= 9999) {
-      if (regDigits.test(this.numbersToGenerateText.trim())
-        && parseInt(this.numbersToGenerateText.trim(), 10) <= 1000 &&
-        parseInt(this.numbersToGenerateText.trim(), 10) >= 1) {
+      if (regDigits.test(this.textByNumbers.trim())
+        && parseInt(this.textByNumbers.trim(), 10) <= 1000 &&
+        parseInt(this.textByNumbers.trim(), 10) >= 1) {
         this.seedNumber = parseInt(this.seedText.trim(), 10);
-        this.numbersToGenerateNumber = parseInt(this.numbersToGenerateText.trim(), 10);
+        this.generateNum = parseInt(this.textByNumbers.trim(), 10);
         this.generateRandomNumbers();
       } else {
         this.generatedRandomNumbers = [];
@@ -61,7 +68,7 @@ export class CentrosCuadradosComponent implements OnInit {
     this.generatedRandomNumbers = [];
 
     let currentX = (this.seedNumber) * (this.seedNumber);
-    for (let i = 0; i < this.numbersToGenerateNumber; i++) {
+    for (let i = 0; i < this.generateNum; i++) {
       let currentXStr = '' + currentX;
 
       if (currentXStr.length > 4) {
@@ -76,14 +83,18 @@ export class CentrosCuadradosComponent implements OnInit {
       this.generatedRandomNumbers.push(parseFloat('0.' + currentXStr));
     }
 
-    this.onShowFlashMessage(this.numbersToGenerateNumber + ' Números generados con semilla: ' + this.seedNumber, true);
+    this.onShowFlashMessage(this.generateNum + ' Números generados con semilla: ' + this.seedNumber, true);
   }
 
   onGenerateChi(){
-    let kin:number= Math.floor(1+ 3.222 * Math.log10(this.numbersToGenerateNumber));
-    let k:number= Math.floor(1+ 3.222 * Math.log10(this.numbersToGenerateNumber));
+    if(this.selected==null){
+      this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
+      return;
+    }
+    let kin:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
+    let k:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let v:number=(kin-1);
-    var arreglados=this.generatedRandomNumbers;
+    let arreglados=this.generatedRandomNumbers;
     arreglados.sort();
     let max:number=arreglados[arreglados.length-1];
     let lit:number = max/kin;
@@ -93,7 +104,7 @@ export class CentrosCuadradosComponent implements OnInit {
     let fers:number[]= [];
     let final:number[]= [];
     let l:number=0;
-   
+    this.finalcompare=0;
     for(let contador =1; contador<=kin; contador++){
       //console.log("%f",arreglado.sort[arreglados.length-1]);
       tablas.push((arreglados[arreglados.length-1]/kin)*contador);
@@ -108,7 +119,7 @@ export class CentrosCuadradosComponent implements OnInit {
     
   
     
-    for(let n =0; n<this.numbersToGenerateNumber; n++){
+    for(let n =0; n<this.generateNum; n++){
       let r=false;
       let count =0;
       while(r==false&&count<kin){
@@ -127,7 +138,7 @@ export class CentrosCuadradosComponent implements OnInit {
     
   });
     
-    if(this.numbersToGenerateNumber>20){
+    if(this.generateNum>20){
     for(let n =0; n<kin; n++){
       
       if(fabs[n]<5){
@@ -182,17 +193,8 @@ export class CentrosCuadradosComponent implements OnInit {
       }
     }
   }
-  fabs.forEach(element => {
-    console.log("%f",element);
-    
-  });
-  tablas.forEach(element => {
-    console.log("%f",element);
-    
-  });
-  
     for(let newn =0; newn<k; newn++){
-      fers.push(fabs[newn]/this.numbersToGenerateNumber);
+      fers.push(fabs[newn]/this.generateNum);
       
       if(newn==0){
         fersteorica.push(tablas[newn]);
@@ -203,10 +205,7 @@ export class CentrosCuadradosComponent implements OnInit {
      
       final.push(Math.pow(fersteorica[newn]-fers[newn],2)/fersteorica[newn]);
     }
-    fersteorica.forEach(element => {
-      console.log(element);
-      
-    });
+   
     final.forEach(element => {
       this.finalcompare=element+this.finalcompare;
       
@@ -220,42 +219,89 @@ export class CentrosCuadradosComponent implements OnInit {
       if(this.finalcompare<this.chi[0][v-1]){
         this.onShowFlashMessage(this.finalcompare + ' Pasa la prueba pues Es menor que el valor chi:' +this.chi[0][v-1], true);
       }else{
-        this.onShowFlashMessage(this.finalcompare + ' No Pasa la prueba pues Es menor que el valor chi:' +this.chi[0][v-1], true);
+        this.onShowFlashMessage(this.finalcompare + ' No Pasa la prueba pues Es mayor que el valor chi:' +this.chi[0][v-1], true);
       }
     }else{
       if(this.finalcompare<this.chi[1][v-1]){
         this.onShowFlashMessage(this.finalcompare + ' Pasa la prueba pues Es menor que el valor chi:' +this.chi[1][v-1], true);
       }else{
-        this.onShowFlashMessage(this.finalcompare + ' No Pasa la prueba pues Es menor que el valor chi:' +this.chi[1][v-1], true);
+        this.onShowFlashMessage(this.finalcompare + ' No Pasa la prueba pues Es mayor que el valor chi:' +this.chi[1][v-1], true);
       }
     }
    
   }
 
   onGenerateKilmogorov(){
-    var arreglados=this.generatedRandomNumbers;
-    arreglados.sort();
-    let fe=1/arreglados.length;
+    if(this.selectedSK==null || this.selectK==null){
+      this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
+      return;
+    }
+    let arreglados2=this.generatedRandomNumbers;
+    arreglados2.sort();
+    let fe=1/arreglados2.length;
     let frec:number[]=[];
     let f1:number[]=[];
     let f2:number[]=[];
     let f1max=0;
     let f2max=0;
     let f=0;
-    for(let i=0; i<arreglados.length;i++){
+    for(let i=0; i<arreglados2.length;i++){
       frec.push(fe*(i+1));
-      f1.push(Math.abs((fe*(i+1))-arreglados[i]));
-      f2.push(arreglados[i]-(fe*i));
+      f1.push(Math.abs((fe*(i+1))-arreglados2[i]));
+      f2.push(Math.abs(arreglados2[i]-(fe*i)));
     }
-    f1.forEach(element => {
-      f1max=f1max+element;
-    });
-    f2.forEach(element => {
-      f2max=f2max+element;
-    });
+    f1.sort();
+    f1max=f1[f1.length-1];
+    f2.sort();
+    f2max=f2[f2.length-1];
     if(f1max<f2max){
       f=f2max;
+    }else{
+      f=f1max;
     }
-
+    console.log(this.selectK);
+    if(this.selectK==1){
+      if(arreglados2.length<21){
+        let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));
+        if(ajustada<this.kolsmir[this.selectedSK][arreglados2.length-1]){
+          this.onShowFlashMessage(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+        }else{
+          this.onShowFlashMessage(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+        }
+      }else{
+        let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));
+        let compareKS=0;
+        if(this.selectedSK==0){
+          compareKS=1.36/Math.sqrt(arreglados2.length);
+        }else{
+          compareKS=1.22/Math.sqrt(arreglados2.length);
+        }
+        if(ajustada<compareKS){
+          this.onShowFlashMessage(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
+        }else{
+          this.onShowFlashMessage(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
+        }
+      }
+    }else{
+      if(arreglados2.length<21){
+        if(f<this.kolsmir[this.selectedSK][arreglados2.length-1]){
+          this.onShowFlashMessage(f+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+        }else{
+          this.onShowFlashMessage(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+        }
+      }else{
+        let compareKS=0;
+        if(this.selectedSK==0){
+          compareKS=1.36/Math.sqrt(arreglados2.length);
+        }else{
+          compareKS=1.22/Math.sqrt(arreglados2.length);
+        }
+        if(f<compareKS){
+          this.onShowFlashMessage(f+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
+        }else{
+          this.onShowFlashMessage(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
+        }
+      }
+    }
   }
 }
