@@ -19,20 +19,20 @@
   <div class="form-group">
     <label for="inputSemillaC">Semilla</label>
     <input type="text" class="form-control" id="inputSemillaC" aria-describedby="inputSemillaCHelp"
-           placeholder="Escriba la semilla" [(ngModel)]="seedText">
+           placeholder="Escriba la semilla" [(ngModel)]="textSeed">
     <small id="inputSemillaCHelp" class="form-text text-muted">La semilla debe ser mayor o igual a 1.</small>
   </div>
 
   <div class="form-group">
     <label for="inputAValueC">Valor de 'a'</label>
     <input type="text" class="form-control" id="inputAValueC" aria-describedby="inputAValueCHelp"
-           placeholder="Escriba el valor de 'a'" [(ngModel)]="valueAText">
+           placeholder="Escriba el valor de 'a'" [(ngModel)]="textAValue">
     <small id="inputAValueCHelp" class="form-text text-muted">'a' se refiere al multiplicador. Debe ser igual o mayor a 1.</small>
   </div>
   <div class="form-group">
     <label for="inputCValueC">Valor de 'c'</label>
     <input type="text" class="form-control" id="inputCValueC" aria-describedby="inputCValueCHelp"
-           placeholder="Escriba el valor de 'c'" [(ngModel)]="valueCText">
+           placeholder="Escriba el valor de 'c'" [(ngModel)]="textCValue">
     <small id="inputCValueCHelp" class="form-text text-muted">'c' se refiere al incremento. Debe ser igual o mayor a 1.</small>
   </div>
   <div class="form-group">
@@ -45,10 +45,35 @@
   <div class="form-group">
     <label for="inputNumbersC">Números a generar</label>
     <input type="text" class="form-control" id="inputNumbersC" aria-describedby="inputNumbersCHelp"
-           placeholder="Escriba cúantos números desea generar" [(ngModel)]="numbersToGenerateText">
+           placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
     <small id="inputNumbersCHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
   </div>
   <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+  <div class="form-group">
+      <label for="inputNumbersChi">Nivel de Signifancia</label>
+      <label for="inputNumbersChi2">5%</label>
+      <input type="radio" name="answer" value=0.05 [(ngModel)]="selected" id="inputNumbersChi2" checked="checked">
+      <label for="inputNumbersChi3">10%</label>
+      <input type="radio" name="answer" value=0.1 [(ngModel)]="selected"  id="inputNumbersChi3"> 
+    </div>
+  <button type="submit" class="btn btn-info" (click)="onGenerateChi()">Prueba Chi</button>
+
+  <div class="form-group">
+      <label for="inputNumbersKS">Forma de Kilmogorov Smirnov</label>
+      <label for="inputNumbersKS2">Sin Ajustar</label>
+      <input type="radio" name="answerN" value=0 [(ngModel)]="selectK" id="inputNumbersKS2" checked="checked">
+      <label for="inputNumbersKS3">Ajustar</label>
+      <input type="radio" name="answerN" value=1 [(ngModel)]="selectK"  id="inputNumbersKS3"> 
+     
+    </div>
+    <div class="form-group">
+        <label for="inputNumbersKSN">Nivel de Signifancia</label>
+        <label for="inputNumbersKS4">5%</label>
+        <input type="radio" name="answer2" value=0 [(ngModel)]="selectedSK" id="inputNumbersKS4" checked="checked">
+        <label for="inputNumbersKS5">10%</label>
+        <input type="radio" name="answer2" value=1 [(ngModel)]="selectedSK"  id="inputNumbersKS5"> 
+    </div>
+  <button type="submit" class="btn btn-info" (click)="onGenerateKilmogorov()">Prueba Kilmogorov Smirnov</button>
 </div>
 
 <hr>
