@@ -15,7 +15,7 @@
     </h1>
   </div>
   <div class="col-xs-12">
-    <h4>El generador congruencial mixto tiene periodo completo si y sólo si</h4>
+    <h4>El generador congruencial mixto es Mixto solo si cumple HD, para cumplir HD tiene que cumplir con las siguientes condiciones</h4>
   </div>
   <div class="col-xs-12">
     <ul>
@@ -37,13 +37,13 @@
     </div>
 
     <div class="form-group">
-      <label for="entradaA">Valor de 'a'</label>
+      <label for="entradaA">Valor de a</label>
       <input type="text" class="form-control" id="entradaA" aria-describedby="entradaAA"
              placeholder="Escriba el valor de 'a' Por ejemplo 5" [(ngModel)]="textAValue">
       <small id="entradaAA" class="form-text text-muted">El multiplicador debe ser 1 o mayor.</small>
     </div>
     <div class="form-group">
-      <label for="entradaC">Valor de 'c'</label>
+      <label for="entradaC">Valor de c</label>
       <input type="text" class="form-control" id="entradaC" aria-describedby="entradaCA"
              placeholder="Escriba el valor de 'c' Por ejemplo 7 " [(ngModel)]="textCValue">
       <small id="entradaCA" class="form-text text-muted">El incremento debe ser 1 o mayor.</small>
@@ -62,7 +62,7 @@
              placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
       <small id="entradaNumA" class="form-text text-muted">El limite de numeros es 1000</small>
     </div>
-    <button type="submit" class="btn btn-custom" (click)="generateA()">Generar números random</button>
+    <button type="submit" class="btn btn-custom" (click)="generateA()">Generar números Aleatorios</button>
     <div class="form-group">
       <label for="inputNumbersChi">Nivel de Signifancia</label>
       <label for="inputNumbersChi2">5%</label>
