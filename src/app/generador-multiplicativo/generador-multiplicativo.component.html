@@ -17,32 +17,32 @@
 <!-- Form -->
 <div class="row">
   <div class="form-group">
-    <label for="inputSemillaGM">Semilla</label>
-    <input type="text" class="form-control" id="inputSemillaGM" aria-describedby="inputSemillaGMHelp"
-           placeholder="Escriba la semilla" [(ngModel)]="seedText">
-    <small id="inputSemillaGMHelp" class="form-text text-muted">La semilla debe ser mayor o igual a 1.</small>
+    <label for="entradaSemilla2">Semilla</label>
+    <input type="text" class="form-control" id="entradaSemilla2" aria-describedby="entradaSemilla2A"
+           placeholder="Escriba la semilla Por ejemplo 27" [(ngModel)]="textSeed">
+    <small id="entradaSemilla2A" class="form-text text-muted">La semilla debe ser 1 o mayor.</small>
   </div>
 
   <div class="form-group">
-    <label for="inputAValueGM">Valor de 'a'</label>
-    <input type="text" class="form-control" id="inputAValueGM" aria-describedby="inputAValueGMHelp"
-           placeholder="Escriba el valor de 'a'" [(ngModel)]="textAValue">
-    <small id="inputAValueGMHelp" class="form-text text-muted">'a' se refiere al multiplicador. Debe ser igual o mayor a 1.</small>
+    <label for="entradaA">Valor de 'a'</label>
+    <input type="text" class="form-control" id="entradaA" aria-describedby="entradaAA"
+           placeholder="Escriba el valor de 'a' Por ejemplo 8" [(ngModel)]="textAValue">
+    <small id="entradaAA" class="form-text text-muted">El multiplicador debe ser 1 o mayor.</small>
   </div>
   <div class="form-group">
-    <label for="inputModValueGM">Valor del módulo</label>
-    <input type="text" class="form-control" id="inputModValueGM" aria-describedby="inputModValueGMHelp"
-           placeholder="Escriba el valor del modulo" [(ngModel)]="modText">
-    <small id="inputModValueGMHelp" class="form-text text-muted">El valor del módulo debe ser mayor o igual a 1 y ser estrictamente mayor que 'a' y la semilla..</small>
+    <label for="entradaModA">Valor del módulo</label>
+    <input type="text" class="form-control" id="entradaModA" aria-describedby="entradaModA"
+           placeholder="Escriba el valor del modulo Por ejemplo 100" [(ngModel)]="modText">
+    <small id="entradaModA" class="form-text text-muted">El módulo debe ser 1 o mayor.</small>
   </div>
 
   <div class="form-group">
-    <label for="inputNumbersC">Números a generar</label>
-    <input type="text" class="form-control" id="inputNumbersC" aria-describedby="inputNumbersCHelp"
+    <label for="entradaNum">Números a generar</label>
+    <input type="text" class="form-control" id="entradaNum" aria-describedby="entradaNumA"
            placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
-    <small id="inputNumbersCHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
+    <small id="entradaNumA" class="form-text text-muted">El limite de numeros es 1000</small>
   </div>
-  <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+  <button type="submit" class="btn btn-info" (click)="generateA()">Generar números random</button>
 </div>
 <div class="form-group">
   <label for="inputNumbersChi">Nivel de Signifancia</label>
@@ -77,7 +77,7 @@
   <div class="jumbotron">
     <h3 class="display-3">Números generados:</h3>
     <hr>
-    <div *ngFor="let rand of generatedRandomNumbers;  let i = index">
+    <div *ngFor="let rand of numerosAleatorios;  let i = index">
       <h5>X{{ i + 1 }}: {{ rand }}</h5>
     </div>
   </div>

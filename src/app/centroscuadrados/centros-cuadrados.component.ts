@@ -17,7 +17,7 @@ export class CentrosCuadradosComponent implements OnInit {
   31.4104, 32.6706],[2.7055, 4.6052, 6.2514, 7.7794, 9.2363,10.6446,12.0170, 13.3616, 14.6837, 15.9872, 12.2750, 18.5493,
   19.8119, 21.0641, 22.3071, 23.5418, 24.7690, 24.1555, 25.3289, 26.4976,27.662]]
   finalcompare:number=0;
-  private seedNumber: number;
+  private semillaN: number;
   private generateNum: number;
   private selected:number;
   private selectedSK:number;
@@ -26,7 +26,7 @@ export class CentrosCuadradosComponent implements OnInit {
   0.338,0.328,0.318,0.309,0.301,0.294],
   [0.950,0.776,0.642,0.564, 0.510, 0.470, 0.438,0.411, 0.388, 0.368, 0.352, 0.338, 0.325, 0.314, 0.304, 0.295,
   0.286,0.278,0.272, 0.264]]
-  generatedRandomNumbers: number[] = [];
+  numerosAleatorios: number[] = [];
  
   onShowFlashMessage(text: string, success: boolean) {
     this.flashMessage = text;
@@ -41,49 +41,49 @@ export class CentrosCuadradosComponent implements OnInit {
   ngOnInit() {
   }
 
-  onGenerateRandomNumbers() {
+  generateA() {
     const reg = new RegExp('[0-9]{4}');
-    const regDigits = /^\d+$/;
+    const digitosRegex = /^\d+$/;
 
-    if (regDigits.test(this.seedText.trim()) && reg.test(this.seedText.trim())
+    if (digitosRegex.test(this.seedText.trim()) && reg.test(this.seedText.trim())
       && parseInt(this.seedText.trim(), 10) >= 1000
       && parseInt(this.seedText.trim(), 10) <= 9999) {
-      if (regDigits.test(this.textByNumbers.trim())
+      if (digitosRegex.test(this.textByNumbers.trim())
         && parseInt(this.textByNumbers.trim(), 10) <= 1000 &&
         parseInt(this.textByNumbers.trim(), 10) >= 1) {
-        this.seedNumber = parseInt(this.seedText.trim(), 10);
+        this.semillaN = parseInt(this.seedText.trim(), 10);
         this.generateNum = parseInt(this.textByNumbers.trim(), 10);
-        this.generateRandomNumbers();
+        this.generaAleatorios();
       } else {
-        this.generatedRandomNumbers = [];
+        this.numerosAleatorios = [];
         this.onShowFlashMessage('Puede generar entre 1 y 1000 números random.', false);
       }
     } else {
-      this.generatedRandomNumbers = [];
+      this.numerosAleatorios = [];
       this.onShowFlashMessage('La semilla debe ser de cuatro dígitos y ser mayor o igual a 1000.', false);
     }
   }
 
-  generateRandomNumbers() {
-    this.generatedRandomNumbers = [];
+  generaAleatorios() {
+    this.numerosAleatorios = [];
 
-    let currentX = (this.seedNumber) * (this.seedNumber);
+    let numX = (this.semillaN) * (this.semillaN);
     for (let i = 0; i < this.generateNum; i++) {
-      let currentXStr = '' + currentX;
+      let stringDeX = '' + numX;
 
-      if (currentXStr.length > 4) {
-        if (currentXStr.length % 2 !== 0) {
-          currentXStr = '0' + currentXStr;
+      if (stringDeX.length > 4) {
+        if (stringDeX.length % 2 !== 0) {
+          stringDeX = '0' + stringDeX;
         }
-        const spliceIndex = ((currentXStr.length - 4) / 2);
-        currentXStr = currentXStr.substr(spliceIndex, 4);
+        const spliceIndex = ((stringDeX.length - 4) / 2);
+        stringDeX = stringDeX.substr(spliceIndex, 4);
       }
-      currentX = parseInt(currentXStr, 10);
-      currentX = currentX * currentX;
-      this.generatedRandomNumbers.push(parseFloat('0.' + currentXStr));
+      numX = parseInt(stringDeX, 10);
+      numX = numX * numX;
+      this.numerosAleatorios.push(parseFloat('0.' + stringDeX));
     }
 
-    this.onShowFlashMessage(this.generateNum + ' Números generados con semilla: ' + this.seedNumber, true);
+    this.onShowFlashMessage(this.generateNum + ' Números generados con semilla: ' + this.semillaN, true);
   }
 
   onGenerateChi(){
@@ -94,7 +94,7 @@ export class CentrosCuadradosComponent implements OnInit {
     let kin:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let k:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let v:number=(kin-1);
-    let arreglados=this.generatedRandomNumbers;
+    let arreglados=this.numerosAleatorios;
     arreglados.sort();
     let max:number=arreglados[arreglados.length-1];
     let lit:number = max/kin;
@@ -236,7 +236,7 @@ export class CentrosCuadradosComponent implements OnInit {
       this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
       return;
     }
-    let arreglados2=this.generatedRandomNumbers;
+    let arreglados2=this.numerosAleatorios;
     arreglados2.sort();
     let fe=1/arreglados2.length;
     let frec:number[]=[];

@@ -9,18 +9,20 @@ export class CongruencialMixtoComponent implements OnInit {
   showFlashMessage = false;
   flashMessageSuccess = true;
   flashMessage = '';
-
+  modText = '';
   textSeed = '';
+  textCValue = '';
   textByNumbers = '';
   textAValue = '';
-  textCValue = '';
-  modText = '';
+  private generateNum: number;
+  
+  private cNum: number;
   chi: number[][] =[[3.8415, 5.9915,7.8147,9.4877,11.0705,12.5916,14.0671,15.5073,16.9190,
     18.3070,19.6752, 21.0261, 22.3620, 23.6848, 24.9958, 26.2962,27.5871, 28.8693, 30.1435, 
     31.4104, 32.6706],[2.7055, 4.6052, 6.2514, 7.7794, 9.2363,10.6446,12.0170, 13.3616, 14.6837, 15.9872, 12.2750, 18.5493,
     19.8119, 21.0641, 22.3071, 23.5418, 24.7690, 24.1555, 25.3289, 26.4976,27.662]]
   finalcompare:number=0;
-
+  private numMod: number;
   private primesList = [
     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103,
     107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223,
@@ -31,11 +33,11 @@ export class CongruencialMixtoComponent implements OnInit {
     751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883,
     887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009];
 
-  private seedNumber: number;
-  private generateNum: number;
-  private aNum: number;
-  private cNum: number;
-  private numMod: number;
+  private semillaN: number;
+  
+  
+  
+  
   private selected:number;
   private selectedSK:number;
   private selectK:number;
@@ -43,7 +45,8 @@ export class CongruencialMixtoComponent implements OnInit {
   0.338,0.328,0.318,0.309,0.301,0.294],
   [0.950,0.776,0.642,0.564, 0.510, 0.470, 0.438,0.411, 0.388, 0.368, 0.352, 0.338, 0.325, 0.314, 0.304, 0.295,
   0.286,0.278,0.272, 0.264]]
-  generatedRandomNumbers: number[] = [];
+  private aNum: number;
+  numerosAleatorios: number[] = [];
 
   onShowFlashMessage(text: string, success: boolean) {
     this.flashMessage = text;
@@ -57,111 +60,111 @@ export class CongruencialMixtoComponent implements OnInit {
   ngOnInit() {
   }
 
-  onGenerateRandomNumbers() {
-    const regDigits = /^\d+$/;
+  generateA() {
+    const digitosRegex = /^\d+$/;
 
-    // Check first, seed value
-    if (regDigits.test(this.textSeed.trim()) && parseInt(this.textSeed.trim(), 10) >= 1) {
-      // Then, check 'a' value
-      if (regDigits.test(this.textAValue.trim()) && parseInt(this.textAValue.trim(), 10) >= 1) {
-        // Then, check 'c' value
-        if (regDigits.test(this.textCValue.trim()) && parseInt(this.textCValue.trim(), 10) >= 1) {
-          // Then, check module value
-          if (regDigits.test(this.modText.trim()) && parseInt(this.modText.trim(), 10) >= 1 && parseInt(this.modText.trim(), 10) <= 1000) {
-            // Then, check numbers to generate
-            if (regDigits.test(this.textByNumbers.trim())
+   
+    if (digitosRegex.test(this.textSeed.trim()) && parseInt(this.textSeed.trim(), 10) >= 1) {
+     
+      if (digitosRegex.test(this.textAValue.trim()) && parseInt(this.textAValue.trim(), 10) >= 1) {
+    
+        if (digitosRegex.test(this.textCValue.trim()) && parseInt(this.textCValue.trim(), 10) >= 1) {
+       
+          if (digitosRegex.test(this.modText.trim()) && parseInt(this.modText.trim(), 10) >= 1 && parseInt(this.modText.trim(), 10) <= 1000) {
+           
+            if (digitosRegex.test(this.textByNumbers.trim())
               && parseInt(this.textByNumbers.trim(), 10) <= 1000 &&
               parseInt(this.textByNumbers.trim(), 10) >= 1) {
-              // Then check if 'c' and the module are coprime
-              if (this.coprimeNumbers(parseInt(this.textCValue.trim(), 10), parseInt(this.modText.trim(), 10))) {
-                // Then check if there is a prime that divides the module and (a-1)
-                if (this.primeSecondCheck(parseInt(this.modText.trim(), 10), parseInt(this.textAValue.trim(), 10))) {
-                  // Then check if 4 divides the module and (a-1)
+          
+              if (this.primosCercanos(parseInt(this.textCValue.trim(), 10), parseInt(this.modText.trim(), 10))) {
+               
+                if (this.checarPrimos(parseInt(this.modText.trim(), 10), parseInt(this.textAValue.trim(), 10))) {
+              
                   if ( ( parseInt(this.modText.trim(), 10) % 4 === 0 ) && ( (parseInt(this.textAValue.trim(), 10) - 1 ) % 4 === 0) ) {
-                    // Everything is ok, preparing to generate random numbers
-                    this.seedNumber = parseInt(this.textSeed.trim(), 10);
+                   
+                    this.semillaN = parseInt(this.textSeed.trim(), 10);
                     this.generateNum = parseInt(this.textByNumbers.trim(), 10);
                     this.aNum = parseInt(this.textAValue.trim(), 10);
                     this.cNum = parseInt(this.textCValue.trim(), 10);
                     this.numMod = parseInt(this.modText.trim(), 10);
-                    this.generateRandomNumbers();
+                    this.generaAleatorios();
                   } else {
-                    // 4 does not divide the module and (a-1)
-                    this.generatedRandomNumbers = [];
-                    this.onShowFlashMessage('No se cumple la tercera condición para un periodo completo', false);
+                   
+                    this.numerosAleatorios = [];
+                    this.onShowFlashMessage('La 3a condición para cumplir HD', false);
                   }
                 } else {
-                  // No prime q found to divide m and (a-1)
-                  this.generatedRandomNumbers = [];
-                  this.onShowFlashMessage('No se cumple la segunda condición para un periodo completo', false);
+                 
+                  this.numerosAleatorios = [];
+                  this.onShowFlashMessage('La 2da condición  es invalida  para cumplir HD', false);
                 }
               } else {
-                // 'c' and module are not coprime
-                this.generatedRandomNumbers = [];
-                this.onShowFlashMessage('No se cumple la primera condición para un periodo completo', false);
+                
+                this.numerosAleatorios = [];
+                this.onShowFlashMessage('La 1era condición  es invalida  para cumplir HD', false);
               }
             } else {
-              // Numbers to generate are invalid
-              this.generatedRandomNumbers = [];
-              this.onShowFlashMessage('Puede generar entre 1 y 1000 números random.', false);
+              
+              this.numerosAleatorios = [];
+              this.onShowFlashMessage('Puede generar entre 1 y 1000 números aleatorios', false);
             }
           } else {
-            // The module value is invalid
-            this.generatedRandomNumbers = [];
+           
+            this.numerosAleatorios = [];
             this.onShowFlashMessage('El valor del módulo debe estar entre 1 y 1000.', false);
           }
         } else {
-          // The 'c' value is invalid
-          this.generatedRandomNumbers = [];
-          this.onShowFlashMessage('El valor de \'c\' debe ser mayor o igual a 1.', false);
+         
+          this.numerosAleatorios = [];
+          this.onShowFlashMessage('El valor de \'c\' debe ser 1 o mayor.', false);
         }
       } else {
         // The 'a' value is invalid
-        this.generatedRandomNumbers = [];
-        this.onShowFlashMessage('El valor de \'a\' debe ser mayor o igual a 1.', false);
+        this.numerosAleatorios = [];
+        this.onShowFlashMessage('El valor de \'a\' debe ser 1 o mayor.', false);
       }
     } else {
       // The seed value is invalid
-      this.generatedRandomNumbers = [];
-      this.onShowFlashMessage('La semilla debe ser mayor o igual a 1.', false);
+      this.numerosAleatorios = [];
+      this.onShowFlashMessage('La semilla debe ser 1 o mayor .', false);
     }
   }
 
-  generateRandomNumbers() {
-    this.generatedRandomNumbers = [];
+  generaAleatorios() {
+    this.numerosAleatorios = [];
 
-    let currentX = (this.seedNumber);
+    let numX = (this.semillaN);
     const a = this.aNum;
     const c = this.cNum;
     const modVal = this.numMod;
 
     for (let i = 0; i < this.generateNum; i++) {
-      currentX = (a * currentX + c) % modVal;
-      this.generatedRandomNumbers.push(currentX / modVal);
+      numX = (a * numX + c) % modVal;
+      this.numerosAleatorios.push(numX / modVal);
     }
 
     this.onShowFlashMessage(this.generateNum + ' Números generados con semilla: ' +
-      this.seedNumber + ', valor de \'a\'=' + this.aNum +
+      this.semillaN + ', valor de \'a\'=' + this.aNum +
       ', valor de \'c\'=' + this.cNum +
       ', valor del módulo=' + this.numMod, true);
   }
 
-  // Check if two values are coprime using the Euclidean algorithm
-  gcd(a: number, b: number) {
-    if (a === 0) {
-      return b;
-    } else if (b === 0) {
-      return a;
+  
+  cercaniaEuclides(x: number, y: number) {
+    if (x === 0) {
+      return y;
+    } else if (y === 0) {
+      return x;
     } else {
-      return this.gcd(b, a % b);
+      return this.cercaniaEuclides(y, x % y);
     }
   }
 
-  coprimeNumbers(a: number, b: number) {
-    return this.gcd(a, b) === 1;
+  primosCercanos(a: number, b: number) {
+    return this.cercaniaEuclides(a, b) === 1;
   }
 
-  primeSecondCheck(m: number, a: number) {
+  checarPrimos(m: number, a: number) {
     let found = false;
     for (let i = 0; i < this.primesList.length && !found; i++) {
       if ((m % this.primesList[i] === 0) && ((a - 1) % this.primesList[i] === 0)) {
@@ -179,7 +182,7 @@ export class CongruencialMixtoComponent implements OnInit {
     let kin:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let k:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let v:number=(kin-1);
-    let arreglados=this.generatedRandomNumbers;
+    let arreglados=this.numerosAleatorios;
     arreglados.sort();
     let max:number=arreglados[arreglados.length-1];
     let lit:number = max/kin;
@@ -218,10 +221,7 @@ export class CongruencialMixtoComponent implements OnInit {
       }
     }
  
-   tablas.forEach(element => {
-    console.log("%f",element);
-    
-  });
+
     
     if(this.generateNum>20){
     for(let n =0; n<kin; n++){
@@ -321,7 +321,7 @@ export class CongruencialMixtoComponent implements OnInit {
       this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
       return;
     }
-    let arreglados2=this.generatedRandomNumbers;
+    let arreglados2=this.numerosAleatorios;
     arreglados2.sort();
     let fe=1/arreglados2.length;
     let frec:number[]=[];

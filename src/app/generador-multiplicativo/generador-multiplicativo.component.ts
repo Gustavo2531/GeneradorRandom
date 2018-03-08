@@ -10,7 +10,7 @@ export class GeneradorMultiplicativoComponent implements OnInit {
   flashMessageSuccess = true;
   flashMessage = '';
 
-  seedText = '';
+  textSeed = '';
   textByNumbers = '';
   textAValue = '';
   modText = '';
@@ -19,11 +19,11 @@ export class GeneradorMultiplicativoComponent implements OnInit {
     31.4104, 32.6706],[2.7055, 4.6052, 6.2514, 7.7794, 9.2363,10.6446,12.0170, 13.3616, 14.6837, 15.9872, 12.2750, 18.5493,
     19.8119, 21.0641, 22.3071, 23.5418, 24.7690, 24.1555, 25.3289, 26.4976,27.662]]
   finalcompare:number=0;
-  private seedNumber: number;
+  private semillaN: number;
   private generateNum: number;
   private aNum: number;
   private numMod: number;
-  generatedRandomNumbers: number[] = [];
+  numerosAleatorios: number[] = [];
   private selected:number;
   private selectedSK:number;
   private selectK:number;
@@ -43,64 +43,64 @@ export class GeneradorMultiplicativoComponent implements OnInit {
   ngOnInit() {
   }
 
-  onGenerateRandomNumbers() {
-    const regDigits = /^\d+$/;
+  generateA() {
+    const digitosRegex = /^\d+$/;
 
-    // Check first, seed value
-    if (regDigits.test(this.seedText.trim()) && parseInt(this.seedText.trim(), 10) >= 1) {
-      // Then, check 'a' value
-      if (regDigits.test(this.textAValue.trim()) && parseInt(this.textAValue.trim(), 10) >= 1) {
-        // Then, check module value
-        if (regDigits.test(this.modText.trim())
+   
+    if (digitosRegex.test(this.textSeed.trim()) && parseInt(this.textSeed.trim(), 10) >= 1) {
+     
+      if (digitosRegex.test(this.textAValue.trim()) && parseInt(this.textAValue.trim(), 10) >= 1) {
+        
+        if (digitosRegex.test(this.modText.trim())
           && parseInt(this.modText.trim(), 10) >= 1
           && parseInt(this.modText.trim(), 10) > parseInt(this.textAValue, 10)
-          && parseInt(this.modText.trim(), 10) > parseInt(this.seedText, 10)) {
-          // Then, check numbers to generate
-          if (regDigits.test(this.textByNumbers.trim())
+          && parseInt(this.modText.trim(), 10) > parseInt(this.textSeed, 10)) {
+        
+          if (digitosRegex.test(this.textByNumbers.trim())
             && parseInt(this.textByNumbers.trim(), 10) <= 1000 &&
             parseInt(this.textByNumbers.trim(), 10) >= 1) {
-            // Everything is ok, preparing to generate random numbers
-            this.seedNumber = parseInt(this.seedText.trim(), 10);
+           
+            this.semillaN = parseInt(this.textSeed.trim(), 10);
             this.generateNum = parseInt(this.textByNumbers.trim(), 10);
             this.aNum = parseInt(this.textAValue.trim(), 10);
             this.numMod = parseInt(this.modText.trim(), 10);
-            this.generateRandomNumbers();
+            this.generaAleatorios();
           } else {
-            // Numbers to generate are invalid
-            this.generatedRandomNumbers = [];
-            this.onShowFlashMessage('Puede generar entre 1 y 1000 números random.', false);
+      
+            this.numerosAleatorios = [];
+            this.onShowFlashMessage('Puede generar entre 1 y 1000 números aleatorios.', false);
           }
         } else {
-          // The module value is invalid
-          this.generatedRandomNumbers = [];
-          this.onShowFlashMessage('El valor del módulo debe ser mayor o igual a 1 y ser estrictamente mayor que \'a\' y la semilla.', false);
+         
+          this.numerosAleatorios = [];
+          this.onShowFlashMessage('El valor del módulo debe ser 1 o mayor y ser mayor que la semilla y \'a\'.', false);
         }
       } else {
-        // The 'a' value is invalid
-        this.generatedRandomNumbers = [];
-        this.onShowFlashMessage('El valor de \'a\' debe ser mayor o igual a 1.', false);
+        
+        this.numerosAleatorios = [];
+        this.onShowFlashMessage('El valor de \'a\' debe ser 1 o mayor', false);
       }
     } else {
-      // The seed value is invalid
-      this.generatedRandomNumbers = [];
-      this.onShowFlashMessage('La semilla debe ser mayor o igual a 1.', false);
+      
+      this.numerosAleatorios = [];
+      this.onShowFlashMessage('La semilla debe ser 1 o mayor.', false);
     }
   }
 
-  generateRandomNumbers() {
-    this.generatedRandomNumbers = [];
+  generaAleatorios() {
+    this.numerosAleatorios = [];
 
-    let currentX = (this.seedNumber);
+    let numX = (this.semillaN);
     const a = this.aNum;
     const modVal = this.numMod;
 
     for (let i = 0; i < this.generateNum; i++) {
-      currentX = (a * currentX) % modVal;
-      this.generatedRandomNumbers.push(currentX / modVal);
+      numX = (a * numX) % modVal;
+      this.numerosAleatorios.push(numX / modVal);
     }
 
     this.onShowFlashMessage(this.generateNum + ' Números generados con semilla: ' +
-      this.seedNumber + ', valor de \'a\'=' + this.aNum +
+      this.semillaN + ', valor de \'a\'=' + this.aNum +
       ', valor del módulo=' + this.numMod, true);
   }
   onGenerateChi(){
@@ -111,7 +111,7 @@ export class GeneradorMultiplicativoComponent implements OnInit {
     let kin:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let k:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
     let v:number=(kin-1);
-    let arreglados=this.generatedRandomNumbers;
+    let arreglados=this.numerosAleatorios;
     arreglados.sort();
     let max:number=arreglados[arreglados.length-1];
     let lit:number = max/kin;
@@ -150,10 +150,6 @@ export class GeneradorMultiplicativoComponent implements OnInit {
       }
     }
  
-   tablas.forEach(element => {
-    console.log("%f",element);
-    
-  });
     
     if(this.generateNum>20){
     for(let n =0; n<kin; n++){
@@ -253,7 +249,7 @@ export class GeneradorMultiplicativoComponent implements OnInit {
       this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
       return;
     }
-    let arreglados2=this.generatedRandomNumbers;
+    let arreglados2=this.numerosAleatorios;
     arreglados2.sort();
     let fe=1/arreglados2.length;
     let frec:number[]=[];
@@ -276,7 +272,7 @@ export class GeneradorMultiplicativoComponent implements OnInit {
     }else{
       f=f1max;
     }
-    console.log(this.selectK);
+   
     if(this.selectK==1){
       if(arreglados2.length<21){
         let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));

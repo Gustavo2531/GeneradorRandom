@@ -17,18 +17,18 @@
 <!-- Form -->
 <div class="row">
   <div class="form-group">
-    <label for="inputSemillaCC">Semilla</label>
-    <input type="text" class="form-control" id="inputSemillaCC" aria-describedby="inputSemillaCCHelp"
-           placeholder="Escriba la semilla" [(ngModel)]="seedText">
-    <small id="inputSemillaCCHelp" class="form-text text-muted">La semilla debe ser de cuatro dígitos y ser mayor o igual a 1000.</small>
+    <label for="entradaSemilla">Semilla</label>
+    <input type="text" class="form-control" id="entradaSemilla" aria-describedby="entradaSemillaA"
+           placeholder="Escriba la semilla Ejemplo 4203" [(ngModel)]="seedText">
+    <small id="entradaSemillaA" class="form-text text-muted">La semilla debe ser de cuatro dígitos y ser mayor a 999.</small>
   </div>
   <div class="form-group">
-    <label for="inputNumbersCC">Números a generar</label>
-    <input type="text" class="form-control" id="inputNumbersCC" aria-describedby="inputNumbersCCHelp"
+    <label for="entradaNumeros">Números a generar</label>
+    <input type="text" class="form-control" id="entradaNumeros" aria-describedby="entradaNumerosA"
            placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
-    <small id="inputNumbersCCHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
+    <small id="entradaNumerosA" class="form-text text-muted">El limite de números que puede generar es 1000. Se recomienda que no sea multiplo de 1000</small>
   </div>
-  <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+  <button type="submit" class="btn btn-info" (click)="generateA()">Generar números aleatorios</button>
   <div class="form-group">
       <label for="inputNumbersChi">Nivel de Signifancia</label>
       <label for="inputNumbersChi2">5%</label>
@@ -62,7 +62,7 @@
   <div class="jumbotron">
     <h3 class="display-3">Números generados:</h3>
     <hr>
-    <div *ngFor="let rand of generatedRandomNumbers;  let i = index">
+    <div *ngFor="let rand of numerosAleatorios;  let i = index">
       <h5>X{{ i + 1 }}: {{ rand }}</h5>
     </div>
   </div>

@@ -29,38 +29,38 @@
 <!-- Form -->
 <div class="row">
   <div class="form-group">
-    <label for="inputSemillaCM">Semilla</label>
-    <input type="text" class="form-control" id="inputSemillaCM" aria-describedby="inputSemillaCMHelp"
-           placeholder="Escriba la semilla" [(ngModel)]="textSeed">
-    <small id="inputSemillaCMHelp" class="form-text text-muted">La semilla debe ser mayor o igual a 1.</small>
+    <label for="entradaSemilla2">Semilla</label>
+    <input type="text" class="form-control" id="entradaSemilla2" aria-describedby="entradaSemilla2A"
+           placeholder="Escriba la semilla Por ejemplo 4" [(ngModel)]="textSeed">
+    <small id="entradaSemilla2A" class="form-text text-muted">La semilla debe ser 1 o mayor.</small>
   </div>
 
   <div class="form-group">
-    <label for="inputAValueCM">Valor de 'a'</label>
-    <input type="text" class="form-control" id="inputAValueCM" aria-describedby="inputAValueCMHelp"
-           placeholder="Escriba el valor de 'a'" [(ngModel)]="textAValue">
-    <small id="inputAValueCMHelp" class="form-text text-muted">'a' se refiere al multiplicador. Debe ser igual o mayor a 1.</small>
+    <label for="entradaA">Valor de 'a'</label>
+    <input type="text" class="form-control" id="entradaA" aria-describedby="entradaAA"
+           placeholder="Escriba el valor de 'a' Por ejemplo 5" [(ngModel)]="textAValue">
+    <small id="entradaAA" class="form-text text-muted">El multiplicador debe ser 1 o mayor.</small>
   </div>
   <div class="form-group">
-    <label for="inputCValueCM">Valor de 'c'</label>
-    <input type="text" class="form-control" id="inputCValueCM" aria-describedby="inputCValueCMHelp"
-           placeholder="Escriba el valor de 'c'" [(ngModel)]="textCValue">
-    <small id="inputCMValueCHelp" class="form-text text-muted">'c' se refiere al incremento. Debe ser igual o mayor a 1.</small>
+    <label for="entradaC">Valor de 'c'</label>
+    <input type="text" class="form-control" id="entradaC" aria-describedby="entradaCA"
+           placeholder="Escriba el valor de 'c' Por ejemplo 7 " [(ngModel)]="textCValue">
+    <small id="entradaCA" class="form-text text-muted">El incremento debe ser 1 o mayor.</small>
   </div>
   <div class="form-group">
-    <label for="inputModValueCM">Valor del módulo</label>
-    <input type="text" class="form-control" id="inputModValueCM" aria-describedby="inputModValueCMHelp"
-           placeholder="Escriba el valor del modulo" [(ngModel)]="modText">
-    <small id="inputModValueCMHelp" class="form-text text-muted">El valor del módulo debe estar entre 1 y 1000.</small>
+    <label for="entradaModA">Valor del módulo</label>
+    <input type="text" class="form-control" id="entradaModA" aria-describedby="entradaModA"
+           placeholder="Escriba el valor del modulo Por ejemplo 8" [(ngModel)]="modText">
+    <small id="entradaModA" class="form-text text-muted">El módulo debe ser 1 o mayor.</small>
   </div>
 
   <div class="form-group">
-    <label for="inputNumbersCM">Números a generar</label>
-    <input type="text" class="form-control" id="inputNumbersCM" aria-describedby="inputNumbersCMHelp"
+    <label for="entradaNum">Números a generar</label>
+    <input type="text" class="form-control" id="entradaNum" aria-describedby="entradaNumA"
            placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
-    <small id="inputNumbersCMHelp" class="form-text text-muted">Puede generar un máximo de 1000 números</small>
+    <small id="entradaNumA" class="form-text text-muted">El limite de numeros es 1000</small>
   </div>
-  <button type="submit" class="btn btn-info" (click)="onGenerateRandomNumbers()">Generar números random</button>
+  <button type="submit" class="btn btn-info" (click)="generateA()">Generar números random</button>
 </div>
 <div class="form-group">
       <label for="inputNumbersChi">Nivel de Signifancia</label>
@@ -94,7 +94,7 @@
   <div class="jumbotron">
     <h3 class="display-3">Números generados:</h3>
     <hr>
-    <div *ngFor="let rand of generatedRandomNumbers;  let i = index">
+    <div *ngFor="let rand of numerosAleatorios;  let i = index">
       <h5>X{{ i + 1 }}: {{ rand }}</h5>
     </div>
   </div>
