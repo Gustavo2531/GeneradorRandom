@@ -48,32 +48,32 @@
            placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
     <small id="entradaNumA" class="form-text text-muted">El limite de numeros es 1000</small>
   </div>
-  <button type="submit" class="btn btn-info" (click)="generateA()">Generar números aleatorios</button>
+  <button type="submit" class="btn btn-custom" (click)="generateA()">Generar números aleatorios</button>
   <div class="form-group">
       <label for="inputNumbersChi">Nivel de Signifancia</label>
       <label for="inputNumbersChi2">5%</label>
       <input type="radio" name="answer" value=0.05 [(ngModel)]="selected" id="inputNumbersChi2" checked="checked">
       <label for="inputNumbersChi3">10%</label>
-      <input type="radio" name="answer" value=0.1 [(ngModel)]="selected"  id="inputNumbersChi3"> 
+      <input type="radio" name="answer" value=0.1 [(ngModel)]="selected"  id="inputNumbersChi3">
     </div>
-  <button type="submit" class="btn btn-info" (click)="onGenerateChi()">Prueba Chi</button>
+  <button type="submit" class="btn btn-custom" (click)="onGenerateChi()">Prueba Chi</button>
 
   <div class="form-group">
-      <label for="inputNumbersKS">Forma de Kilmogorov Smirnov</label>
+      <label for="inputNumbersKS">Forma de Kilmogorov Smirnov</label><br>
       <label for="inputNumbersKS2">Sin Ajustar</label>
       <input type="radio" name="answerN" value=0 [(ngModel)]="selectK" id="inputNumbersKS2" checked="checked">
       <label for="inputNumbersKS3">Ajustar</label>
-      <input type="radio" name="answerN" value=1 [(ngModel)]="selectK"  id="inputNumbersKS3"> 
-     
+      <input type="radio" name="answerN" value=1 [(ngModel)]="selectK"  id="inputNumbersKS3">
+
     </div>
     <div class="form-group">
         <label for="inputNumbersKSN">Nivel de Signifancia</label>
         <label for="inputNumbersKS4">5%</label>
         <input type="radio" name="answer2" value=0 [(ngModel)]="selectedSK" id="inputNumbersKS4" checked="checked">
         <label for="inputNumbersKS5">10%</label>
-        <input type="radio" name="answer2" value=1 [(ngModel)]="selectedSK"  id="inputNumbersKS5"> 
+        <input type="radio" name="answer2" value=1 [(ngModel)]="selectedSK"  id="inputNumbersKS5">
     </div>
-  <button type="submit" class="btn btn-info" (click)="onGenerateKilmogorov()">Prueba Kilmogorov Smirnov</button>
+  <button type="submit" class="btn btn-custom" (click)="onGenerateKilmogorov()">Prueba Kilmogorov Smirnov</button>
 </div>
 
 <hr>

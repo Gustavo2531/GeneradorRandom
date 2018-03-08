@@ -1,0 +1,23 @@
+nav{
+  background-color: #CA3532;
+  border: none;
+}
+
+.navbar {
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+}
+
+.navbar-header a{
+  color: #F0DACD;
+}
+
+.navbar-default a {
+  color: #F0DACD;
+}
+
+.navbar-default a:hover {
+  color: #FAFAFA;
+}
+
