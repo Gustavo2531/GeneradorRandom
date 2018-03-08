@@ -11,6 +11,8 @@ nav{
 
 .navbar-header a{
   color: #F0DACD;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .navbar-default a {
