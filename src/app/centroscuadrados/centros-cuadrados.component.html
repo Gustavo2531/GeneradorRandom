@@ -20,13 +20,13 @@
     <label for="entradaSemilla">Semilla</label>
     <input type="text" class="form-control" id="entradaSemilla" aria-describedby="entradaSemillaA"
            placeholder="Escriba la semilla Ejemplo 4203" [(ngModel)]="seedText">
-    <small id="entradaSemillaA" class="form-text text-muted">La semilla debe ser de cuatro dígitos y ser mayor a 999.</small>
+    <small id="entradaSemillaA" class="form-text text-muted">La semilla debe ser de cuatro dígitos y ser mayor a 999. Se recomienda que no sea multiplo de 1000.</small>
   </div>
   <div class="form-group">
     <label for="entradaNumeros">Números a generar</label>
     <input type="text" class="form-control" id="entradaNumeros" aria-describedby="entradaNumerosA"
            placeholder="Escriba cúantos números desea generar" [(ngModel)]="textByNumbers">
-    <small id="entradaNumerosA" class="form-text text-muted">El limite de números que puede generar es 1000. Se recomienda que no sea multiplo de 1000</small>
+    <small id="entradaNumerosA" class="form-text text-muted">El limite de números que puede generar es 1000. </small>
   </div>
   <button type="submit" class="btn btn-info" (click)="generateA()">Generar números aleatorios</button>
   <div class="form-group">

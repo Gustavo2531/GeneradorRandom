@@ -6,9 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./congruencial-mixto.component.css']
 })
 export class CongruencialMixtoComponent implements OnInit {
-  showFlashMessage = false;
-  flashMessageSuccess = true;
-  flashMessage = '';
+ 
   modText = '';
   textSeed = '';
   textCValue = '';
@@ -45,20 +43,23 @@ export class CongruencialMixtoComponent implements OnInit {
   0.338,0.328,0.318,0.309,0.301,0.294],
   [0.950,0.776,0.642,0.564, 0.510, 0.470, 0.438,0.411, 0.388, 0.368, 0.352, 0.338, 0.325, 0.314, 0.304, 0.295,
   0.286,0.278,0.272, 0.264]]
+  showFlashMessage = false;
+  flashMessageSuccess = true;
+  flashMessage = '';
   private aNum: number;
   numerosAleatorios: number[] = [];
-
-  onShowFlashMessage(text: string, success: boolean) {
-    this.flashMessage = text;
-    this.flashMessageSuccess = success;
-    this.showFlashMessage = true;
-  }
-
   constructor() {
   }
 
   ngOnInit() {
   }
+  mostrarMensaje(text: string, success: boolean) {
+    this.flashMessage = text;
+    this.flashMessageSuccess = success;
+    this.showFlashMessage = true;
+  }
+
+ 
 
   generateA() {
     const digitosRegex = /^\d+$/;
@@ -91,42 +92,42 @@ export class CongruencialMixtoComponent implements OnInit {
                   } else {
                    
                     this.numerosAleatorios = [];
-                    this.onShowFlashMessage('La 3a condición para cumplir HD', false);
+                    this.mostrarMensaje('La 3a condición para cumplir HD', false);
                   }
                 } else {
                  
                   this.numerosAleatorios = [];
-                  this.onShowFlashMessage('La 2da condición  es invalida  para cumplir HD', false);
+                  this.mostrarMensaje('La 2da condición  es invalida  para cumplir HD', false);
                 }
               } else {
                 
                 this.numerosAleatorios = [];
-                this.onShowFlashMessage('La 1era condición  es invalida  para cumplir HD', false);
+                this.mostrarMensaje('La 1era condición  es invalida  para cumplir HD', false);
               }
             } else {
               
               this.numerosAleatorios = [];
-              this.onShowFlashMessage('Puede generar entre 1 y 1000 números aleatorios', false);
+              this.mostrarMensaje('Puede generar entre 1 y 1000 números aleatorios', false);
             }
           } else {
            
             this.numerosAleatorios = [];
-            this.onShowFlashMessage('El valor del módulo debe estar entre 1 y 1000.', false);
+            this.mostrarMensaje('El valor del módulo debe estar entre 1 y 1000.', false);
           }
         } else {
          
           this.numerosAleatorios = [];
-          this.onShowFlashMessage('El valor de \'c\' debe ser 1 o mayor.', false);
+          this.mostrarMensaje('El valor de \'c\' debe ser 1 o mayor.', false);
         }
       } else {
         // The 'a' value is invalid
         this.numerosAleatorios = [];
-        this.onShowFlashMessage('El valor de \'a\' debe ser 1 o mayor.', false);
+        this.mostrarMensaje('El valor de \'a\' debe ser 1 o mayor.', false);
       }
     } else {
       // The seed value is invalid
       this.numerosAleatorios = [];
-      this.onShowFlashMessage('La semilla debe ser 1 o mayor .', false);
+      this.mostrarMensaje('La semilla debe ser 1 o mayor .', false);
     }
   }
 
@@ -143,7 +144,7 @@ export class CongruencialMixtoComponent implements OnInit {
       this.numerosAleatorios.push(numX / modVal);
     }
 
-    this.onShowFlashMessage(this.generateNum + ' Números generados con semilla: ' +
+    this.mostrarMensaje(this.generateNum + ' Números generados con semilla: ' +
       this.semillaN + ', valor de \'a\'=' + this.aNum +
       ', valor de \'c\'=' + this.cNum +
       ', valor del módulo=' + this.numMod, true);
@@ -176,7 +177,7 @@ export class CongruencialMixtoComponent implements OnInit {
 
   onGenerateChi(){
     if(this.selected==null){
-      this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
+      this.mostrarMensaje(0 + ' Selecciona todos los argumentos  ' + 0, true);
       return;
     }
     let kin:number= Math.floor(1+ 3.222 * Math.log10(this.generateNum));
@@ -302,15 +303,15 @@ export class CongruencialMixtoComponent implements OnInit {
   
     if(this.selected==0.05){
       if(this.finalcompare<this.chi[0][v-1]){
-        this.onShowFlashMessage(this.finalcompare + ' Pasa la prueba pues Es menor que el valor chi:' +this.chi[0][v-1], true);
+        this.mostrarMensaje(this.finalcompare + ' Pasa la prueba pues Es menor que el valor chi:' +this.chi[0][v-1], true);
       }else{
-        this.onShowFlashMessage(this.finalcompare + ' No Pasa la prueba pues Es mayor que el valor chi:' +this.chi[0][v-1], true);
+        this.mostrarMensaje(this.finalcompare + ' No Pasa la prueba pues Es mayor que el valor chi:' +this.chi[0][v-1], true);
       }
     }else{
       if(this.finalcompare<this.chi[1][v-1]){
-        this.onShowFlashMessage(this.finalcompare + ' Pasa la prueba pues Es menor que el valor chi:' +this.chi[1][v-1], true);
+        this.mostrarMensaje(this.finalcompare + ' Pasa la prueba pues Es menor que el valor chi:' +this.chi[1][v-1], true);
       }else{
-        this.onShowFlashMessage(this.finalcompare + ' No Pasa la prueba pues Es mayor que el valor chi:' +this.chi[1][v-1], true);
+        this.mostrarMensaje(this.finalcompare + ' No Pasa la prueba pues Es mayor que el valor chi:' +this.chi[1][v-1], true);
       }
     }
    
@@ -318,7 +319,7 @@ export class CongruencialMixtoComponent implements OnInit {
 
   onGenerateKilmogorov(){
     if(this.selectedSK==null || this.selectK==null){
-      this.onShowFlashMessage(0 + ' Selecciona todos los argumentos  ' + 0, true);
+      this.mostrarMensaje(0 + ' Selecciona todos los argumentos  ' + 0, true);
       return;
     }
     let arreglados2=this.numerosAleatorios;
@@ -349,9 +350,9 @@ export class CongruencialMixtoComponent implements OnInit {
       if(arreglados2.length<21){
         let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));
         if(ajustada<this.kolsmir[this.selectedSK][arreglados2.length-1]){
-          this.onShowFlashMessage(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }else{
-          this.onShowFlashMessage(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }
       }else{
         let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));
@@ -362,17 +363,17 @@ export class CongruencialMixtoComponent implements OnInit {
           compareKS=1.22/Math.sqrt(arreglados2.length);
         }
         if(ajustada<compareKS){
-          this.onShowFlashMessage(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
         }else{
-          this.onShowFlashMessage(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
         }
       }
     }else{
       if(arreglados2.length<21){
         if(f<this.kolsmir[this.selectedSK][arreglados2.length-1]){
-          this.onShowFlashMessage(f+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(f+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }else{
-          this.onShowFlashMessage(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }
       }else{
         let compareKS=0;
@@ -382,9 +383,9 @@ export class CongruencialMixtoComponent implements OnInit {
           compareKS=1.22/Math.sqrt(arreglados2.length);
         }
         if(f<compareKS){
-          this.onShowFlashMessage(f+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(f+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
         }else{
-          this.onShowFlashMessage(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
         }
       }
     }
