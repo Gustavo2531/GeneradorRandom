@@ -265,9 +265,9 @@ export class CentrosCuadradosComponent implements OnInit {
       if(arreglados2.length<21){
         let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));
         if(ajustada<this.kolsmir[this.selectedSK][arreglados2.length-1]){
-          this.mostrarMensaje(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(ajustada+ 'Pasa la prueba pues Es mayor que el valor Kolmogrov Smirnov:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }else{
-          this.mostrarMensaje(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor Kolmogrov Smirnov:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }
       }else{
         let ajustada=f*(Math.sqrt(arreglados2.length)+0.12+(0.11/Math.sqrt(arreglados2.length)));
@@ -278,17 +278,17 @@ export class CentrosCuadradosComponent implements OnInit {
           compareKS=1.22/Math.sqrt(arreglados2.length);
         }
         if(ajustada<compareKS){
-          this.mostrarMensaje(ajustada+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(ajustada+ ' Pasa la prueba pues Es mayor que el valor Kolmogrov Smirnov' +compareKS, true);
         }else{
-          this.mostrarMensaje(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(ajustada+ ' NO Pasa la prueba pues Es mayor que el valor Kolmogrov Smirnov: ' +compareKS, true);
         }
       }
     }else{
       if(arreglados2.length<21){
         if(f<this.kolsmir[this.selectedSK][arreglados2.length-1]){
-          this.mostrarMensaje(f+ ' Pasa la prueba pues Es menor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(f+ ' Pasa la prueba pues Es menor que el valor Kolmogrov Smirnov:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }else{
-          this.mostrarMensaje(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
+          this.mostrarMensaje(f+ ' NO Pasa la prueba pues Es mayor que el valor Kolmogrov Smirnov:' +this.kolsmir[this.selectedSK][arreglados2.length-1], true);
         }
       }else{
         let compareKS=0;
@@ -298,9 +298,9 @@ export class CentrosCuadradosComponent implements OnInit {
           compareKS=1.22/Math.sqrt(arreglados2.length);
         }
         if(f<compareKS){
-          this.mostrarMensaje(f+ ' Pasa la prueba pues Es menor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(f+ ' Pasa la prueba pues Es menor que el valor Kolmogrov Smirnov:' +compareKS, true);
         }else{
-          this.mostrarMensaje(f+ ' NO Pasa la prueba pues Es mayor que el valor chi:' +compareKS, true);
+          this.mostrarMensaje(f+ ' NO Pasa la prueba pues Es mayor que el valor Kolmogrov Smirnov:' +compareKS, true);
         }
       }
     }
