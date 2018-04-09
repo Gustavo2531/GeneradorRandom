@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Diagramas de Flujo &mdash; documentación de Generador de Números - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Manual de Usuario" href="manual.html" />
+    <link rel="prev" title="Diagrama de Clases" href="clases.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Generador de Números
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clases.html">Diagrama de Clases</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagramas de Flujo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#metodos-compartidos">Métodos compartidos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metodos-generadores">Métodos Generadores</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metodo-de-centro-cuadrado">Método de Centro Cuadrado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metodo-congruencial-lineal">Método Congruencial Lineal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metodo-congruencia-mixto">Método Congruencia Mixto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generador-multiplicativo">Generador Multiplicativo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">Manual de Usuario</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Generador de Números</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Diagramas de Flujo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/flujo.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="diagramas-de-flujo">
+<h1>Diagramas de Flujo<a class="headerlink" href="#diagramas-de-flujo" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="metodos-compartidos">
+<h2>Métodos compartidos<a class="headerlink" href="#metodos-compartidos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En cada uno de las clases implementadas encontramos cuatro metodos. <code class="docutils literal"><span class="pre">generateA()</span></code>, <code class="docutils literal"><span class="pre">mostrarMensaje()</span></code> , <code class="docutils literal"><span class="pre">onGenerateKilmogorov()</span></code> y <code class="docutils literal"><span class="pre">onGenerateChi()</span></code>. Por lo que se definiran en esta
+sección para evitar duplicar esfuerzos.</p>
+<p><code class="docutils literal"><span class="pre">generateA()</span></code>:</p>
+<img alt="_images/A.png" src="_images/A.png" />
+<p>Este diagrama recibe los parametros iniciales los mapea acorde y checa si algún valor esta vacío.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este diagrama es una variante en cada clase, se ajusta su proceso acorde a las variables que recibe.</p>
+</div>
+<p><code class="docutils literal"><span class="pre">mostrarMensaje()</span></code>:</p>
+<img alt="_images/mensaje.png" src="_images/mensaje.png" />
+<p>Este método settea las variables para posteriormente mostrar mensajes de alterta o de error en la vista.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El valor de <code class="docutils literal"><span class="pre">text</span></code> es el mensaje y <code class="docutils literal"><span class="pre">success</span></code> representa si es un “error” o “ok”</p>
+</div>
+<p><code class="docutils literal"><span class="pre">onGenerateKilmogorov()</span></code>:</p>
+<img alt="_images/Kolmogrov.png" src="_images/Kolmogrov.png" />
+<p>Este diagrama hace las prueba de Kolmogorov para asegurarse que un cantidad <code class="docutils literal"><span class="pre">n</span></code> de números aleatorios hayan seguido una distribucción uniforme.</p>
+<p><code class="docutils literal"><span class="pre">onGenerateChi()</span></code>:</p>
+<img alt="_images/Chi.png" src="_images/Chi.png" />
+<p>Este diagrama hace las prueba de Chi Cuadrada para asegurarse que un cantidad <code class="docutils literal"><span class="pre">n</span></code> de números aleatorios hayan seguido una distribucción uniforme.</p>
+</div>
+<div class="section" id="metodos-generadores">
+<h2>Métodos Generadores<a class="headerlink" href="#metodos-generadores" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="metodo-de-centro-cuadrado">
+<h3>Método de Centro Cuadrado<a class="headerlink" href="#metodo-de-centro-cuadrado" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">generaAleatorios()</span></code>:</p>
+<img alt="_images/Cuadrados1.png" src="_images/Cuadrados1.png" />
+<p>Este diagrama genera números aleatorios con una probabilidad uniforme usando el método cuadrado perfecto.</p>
+</div>
+<div class="section" id="metodo-congruencial-lineal">
+<h3>Método Congruencial Lineal<a class="headerlink" href="#metodo-congruencial-lineal" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">generaAleatorios()</span></code>:</p>
+<img alt="_images/Aleatorios.png" src="_images/Aleatorios.png" />
+<p>Este método genera números aleatorios con una probabilidad uniforme usando el método congruencial lineal.</p>
+</div>
+<div class="section" id="metodo-congruencia-mixto">
+<h3>Método Congruencia Mixto<a class="headerlink" href="#metodo-congruencia-mixto" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">primosCercanos()</span></code>:</p>
+<img alt="_images/primos.png" src="_images/primos.png" />
+<p>Este método se apoya de la teorema de euclides para checar si dos numeros son primos relativos. Esto se hace con la finalidad de
+comprobar el teorema de HULL-DOBELL</p>
+<p><code class="docutils literal"><span class="pre">cercaniaEuclides()</span></code>:</p>
+<img alt="_images/Euclides.png" src="_images/Euclides.png" />
+<p>Teorema de Euclides puesto en practica.</p>
+<p><code class="docutils literal"><span class="pre">checarPrimos()</span></code>:</p>
+<img alt="_images/checarPrimos.png" src="_images/checarPrimos.png" />
+<p>Este método se usa para checar que por lo menos exista un número <code class="docutils literal"><span class="pre">q</span></code> primo de <code class="docutils literal"><span class="pre">m</span></code> que divida a <code class="docutils literal"><span class="pre">a-1</span></code></p>
+<p><code class="docutils literal"><span class="pre">generaAleatorios()</span></code>:</p>
+<img alt="_images/Aleatorios.png" src="_images/Aleatorios.png" />
+<p>Este método genera números aleatorios con una probabilidad uniforme usando el método congruencial mixto.</p>
+</div>
+<div class="section" id="generador-multiplicativo">
+<h3>Generador Multiplicativo<a class="headerlink" href="#generador-multiplicativo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">generaAleatorios()</span></code>:</p>
+<img alt="_images/multiplicativo.png" src="_images/multiplicativo.png" />
+<p>Este método genera números aleatorios con una probabilidad uniforme usando el método del generador multiplicativo</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="manual.html" class="btn btn-neutral float-right" title="Manual de Usuario" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clases.html" class="btn btn-neutral" title="Diagrama de Clases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Héctor Flores, Gustavo Méndez, Alfonso Ledezma.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'es',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

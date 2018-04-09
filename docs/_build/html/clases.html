@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Diagrama de Clases &mdash; documentación de Generador de Números - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Diagramas de Flujo" href="flujo.html" />
+    <link rel="prev" title="Generador de Números Aleatorios" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Generador de Números
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Diagrama de Clases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#header">header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#centroscuadrados">centroscuadrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#congruencial">congruencial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#congruencialmixto">congruencialmixto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-message">flash-message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generador-multiplicativo">generador-multiplicativo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Diagrama de Clases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flujo.html">Diagramas de Flujo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">Manual de Usuario</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Generador de Números</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Diagrama de Clases</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/clases.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="diagrama-de-clases">
+<h1>Diagrama de Clases<a class="headerlink" href="#diagrama-de-clases" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El diagrama de clases nos permite visualizar el contenido de cada una de las clases que conforman a nuestro sistema
+a continuación se demuestra como se compone el sistema de <code class="docutils literal"><span class="pre">Generador</span> <span class="pre">de</span> <span class="pre">Números</span> <span class="pre">Aleatorios</span></code>.</p>
+<p>Todo el sistema se encuentra en la carpeta de <code class="docutils literal"><span class="pre">/src/app</span></code>. Por lo que el siguiente diagrama se va a enfocar en
+esta carpeta.</p>
+<p>Angular tiene módulos que conforman a un sistema. Cada módulo que exista en el sistema se tomara como si fuera
+una clase. Un módulo se conforma de la siguiente estructura</p>
+<p>Nombre del modulo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Modulo
+├── modulo.css
+└── modulo.html
+└── modulo.ts
+</pre></div>
+</div>
+<p>Donde <code class="docutils literal"><span class="pre">.html</span></code> y <code class="docutils literal"><span class="pre">.css</span></code> son las vistas que rendera el modulo y el archivo <code class="docutils literal"><span class="pre">.ts</span></code> contiene la logica del sistema.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last"><code class="docutils literal"><span class="pre">modulo</span></code> es el nombre de la clase que se esta empleando. En este caso puede tener cualquier nombre siguiendo con las convenciones de Angular.</p>
+</div>
+<div class="section" id="header">
+<h2>header<a class="headerlink" href="#header" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Header no tiene lógica que se procese en el controlador, ya que todo el contenido se encuentra en la vista <code class="docutils literal"><span class="pre">.html</span></code> por lo que
+el diagrama de clases esta vacio.</p>
+<p>Su diagrama es el siguiente:</p>
+<img alt="_images/Header.png" src="_images/Header.png" />
+</div>
+<div class="section" id="centroscuadrados">
+<h2>centroscuadrados<a class="headerlink" href="#centroscuadrados" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El método de centros cuadrados se encarga de generar como bien dice su nombre el procesamiento de números aleatorios
+a traves de método de cuadrados perfectos.</p>
+<p>Su diagrama es el siguiente:</p>
+<img alt="_images/Cuadrados.png" src="_images/Cuadrados.png" />
+</div>
+<div class="section" id="congruencial">
+<h2>congruencial<a class="headerlink" href="#congruencial" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este diagrama de clases corresponde al método generador congruencial lineal. La diferencia entre este y el mixto
+es que las pruebas de HULL-DOBELL no se ejecutan.</p>
+<p>Su diagrama es el siguiente:</p>
+<img alt="_images/Congruencial.png" src="_images/Congruencial.png" />
+</div>
+<div class="section" id="congruencialmixto">
+<h2>congruencialmixto<a class="headerlink" href="#congruencialmixto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En este diagrama se expifican los métodos del generador congruencial mixto. En este como bien se especifica estan las pruebas
+de HULL-DOBELL</p>
+<p>Su diagrama es el siguiente:</p>
+<img alt="_images/CongruencialMixto.png" src="_images/CongruencialMixto.png" />
+</div>
+<div class="section" id="flash-message">
+<h2>flash-message<a class="headerlink" href="#flash-message" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este modulo corresponde a la generación de los mensaje de <code class="docutils literal"><span class="pre">error</span></code>, <code class="docutils literal"><span class="pre">advertencia</span></code> y <code class="docutils literal"><span class="pre">ok</span></code>.</p>
+<p>Su diagrama es el siguiente:</p>
+<img alt="_images/Flash.png" src="_images/Flash.png" />
+</div>
+<div class="section" id="generador-multiplicativo">
+<h2>generador-multiplicativo<a class="headerlink" href="#generador-multiplicativo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se encarga de mostrar la lógica de implementacion de método generador-multiplicativo.</p>
+<p>Su diagrama es el siguiente:</p>
+<img alt="_images/GeneradorMulti.png" src="_images/GeneradorMulti.png" />
+</div>
+<div class="section" id="id1">
+<h2>Diagrama de Clases<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El diagrama con sus respectivas conexiones se ve de la siguiente forma:</p>
+<img alt="_images/General.png" src="_images/General.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="flujo.html" class="btn btn-neutral float-right" title="Diagramas de Flujo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Generador de Números Aleatorios" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Héctor Flores, Gustavo Méndez, Alfonso Ledezma.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'es',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

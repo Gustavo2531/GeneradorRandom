@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manual de Usuario &mdash; documentación de Generador de Números - 0.0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="Diagramas de Flujo" href="flujo.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Generador de Números
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contenido:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clases.html">Diagrama de Clases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flujo.html">Diagramas de Flujo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Manual de Usuario</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acceso">Acceso</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opcion-1-compilando-desde-codigo">Opcion 1: Compilando desde código:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opcion-2-usando-el-ejecutable">Opcion 2: Usando el ejecutable:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#opciones">Opciones</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generador-de-centros-cuadrados">Generador de Centros Cuadrados</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generador-congruencial-lineal">Generador Congruencial Lineal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generador-congruencial-mixto-con-pruebas-de-hull-dobell">Generador Congruencial Mixto con pruebas de HULL-DOBELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generador-multiplicativo">Generador Multiplicativo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pruebas-de-bondad">Pruebas de Bondad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chi-cuadrada">Chi Cuadrada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kolmogorov-smirnov">Kolmogorov-Smirnov</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Generador de Números</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Manual de Usuario</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="manual-de-usuario">
+<h1><a class="toc-backref" href="#id1">Manual de Usuario</a><a class="headerlink" href="#manual-de-usuario" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Bienvenido al <code class="docutils literal"><span class="pre">Generador</span> <span class="pre">de</span> <span class="pre">Números</span> <span class="pre">Aleatorios</span></code>. Este programa esta hecho por Héctor Flores, Gustavo Mendez y Alfonso Ledezma
+a continuación veremos las diferentes formas de interactuar con el sistema.</p>
+<p>El sistema se compone de 4 diferentes módulos:</p>
+<div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#manual-de-usuario" id="id1">Manual de Usuario</a><ul>
+<li><a class="reference internal" href="#acceso" id="id2">Acceso</a><ul>
+<li><a class="reference internal" href="#opcion-1-compilando-desde-codigo" id="id3">Opcion 1: Compilando desde código:</a></li>
+<li><a class="reference internal" href="#opcion-2-usando-el-ejecutable" id="id4">Opcion 2: Usando el ejecutable:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#opciones" id="id5">Opciones</a><ul>
+<li><a class="reference internal" href="#generador-de-centros-cuadrados" id="id6">Generador de Centros Cuadrados</a></li>
+<li><a class="reference internal" href="#generador-congruencial-lineal" id="id7">Generador Congruencial Lineal</a></li>
+<li><a class="reference internal" href="#generador-congruencial-mixto-con-pruebas-de-hull-dobell" id="id8">Generador Congruencial Mixto con pruebas de HULL-DOBELL</a></li>
+<li><a class="reference internal" href="#generador-multiplicativo" id="id9">Generador Multiplicativo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pruebas-de-bondad" id="id10">Pruebas de Bondad</a><ul>
+<li><a class="reference internal" href="#chi-cuadrada" id="id11">Chi Cuadrada</a></li>
+<li><a class="reference internal" href="#kolmogorov-smirnov" id="id12">Kolmogorov-Smirnov</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#referencias" id="id13">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="acceso">
+<h2><a class="toc-backref" href="#id2">Acceso</a><a class="headerlink" href="#acceso" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se puede accesar al sistema de dos formas:</p>
+<ul class="simple">
+<li>Compilando desde código</li>
+<li>Usando el ejecutable</li>
+</ul>
+<div class="section" id="opcion-1-compilando-desde-codigo">
+<h3><a class="toc-backref" href="#id3">Opcion 1: Compilando desde código:</a><a class="headerlink" href="#opcion-1-compilando-desde-codigo" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para poder ejecutar este paso es necesario contar con <code class="docutils literal"><span class="pre">node</span></code> y <code class="docutils literal"><span class="pre">npm</span></code></p>
+</div>
+<p>1-. Navegamos al repositorio Github: <a class="reference external" href="https://github.com/Gustavo2531/GeneradorRandom">https://github.com/Gustavo2531/GeneradorRandom</a></p>
+<p>2-. Clonamos el repositorio usando:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Gustavo2531</span><span class="o">/</span><span class="n">GeneradorRandom</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>3-. Descargamos las dependencias usando:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>4-. Construimos el proyecto usando:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ng</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>5-. Ejecutamos el proyecto usando:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ng</span> <span class="n">serve</span>
+</pre></div>
+</div>
+<p>6-. Navegamos a la dirección <a class="reference external" href="http://localhost:4200">http://localhost:4200</a> y listo</p>
+</div>
+<div class="section" id="opcion-2-usando-el-ejecutable">
+<h3><a class="toc-backref" href="#id4">Opcion 2: Usando el ejecutable:</a><a class="headerlink" href="#opcion-2-usando-el-ejecutable" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Esta opción solo es valida si eres usuario Windows</p>
+</div>
+<p>1-. Ejecutamos el ejecutable incluido en el CD con terminación <code class="docutils literal"><span class="pre">.exe</span></code></p>
+</div>
+</div>
+<div class="section" id="opciones">
+<h2><a class="toc-backref" href="#id5">Opciones</a><a class="headerlink" href="#opciones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez que estes en el navegador veras una pantalla muy similar a esta.</p>
+<img alt="_images/incio.png" src="_images/incio.png" />
+<p>En la parte inferior se puede notar una barra de color roja. Ese es tu menú de navegación y en ella podras
+iterar en cada una de las opciones del programa.</p>
+<p>Actualmente estas posicionado en el <code class="docutils literal"><span class="pre">Método</span> <span class="pre">de</span> <span class="pre">Cuadrado</span> <span class="pre">Perfecto</span></code></p>
+<div class="admonition attention">
+<p class="first admonition-title">Atención</p>
+<p class="last">Independientemente de la opción que selecciones es necesario llenar todos los campos de la ventana actual</p>
+</div>
+<div class="section" id="generador-de-centros-cuadrados">
+<h3><a class="toc-backref" href="#id6">Generador de Centros Cuadrados</a><a class="headerlink" href="#generador-de-centros-cuadrados" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para empezar a usar el <code class="docutils literal"><span class="pre">Generador</span> <span class="pre">de</span> <span class="pre">Cuadrado</span> <span class="pre">Perfecto</span></code> este requiere usar una semilla aleatoria que el usuario
+debera de proporcionar. De igual forma se debe especificar un limite de números en el segundo recuadro.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En caso de te llegaras a equivocar en uno de los parametros de control el mismo sistema te avisara con un anuncío similar a este</p>
+</div>
+<img alt="_images/alerta.png" src="_images/alerta.png" />
+<p>Una vez que hayas especificado todos los valores puedes hacer click en el bóton <strong>Generar números aleatorios</strong> a continuación aparecera algo así.</p>
+<img alt="_images/cuadrado.png" src="_images/cuadrado.png" />
+<p>En caso de querer las pruebas Chi o Kolmogorov respectivamente se pueden usar los apartados especificados donde:</p>
+<ul class="simple">
+<li>En la prueba Chi se pide el nivel de <code class="docutils literal"><span class="pre">significancia</span></code></li>
+<li>En la prueba de Kolmogorov se pide el tipo de <code class="docutils literal"><span class="pre">ajuste</span></code> y <code class="docutils literal"><span class="pre">significancia</span></code></li>
+</ul>
+</div>
+<div class="section" id="generador-congruencial-lineal">
+<h3><a class="toc-backref" href="#id7">Generador Congruencial Lineal</a><a class="headerlink" href="#generador-congruencial-lineal" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para empezar a usar el <code class="docutils literal"><span class="pre">Generador</span> <span class="pre">Congruencial</span> <span class="pre">Lineal</span></code> este requiere usar una semilla aleatoria que el usuario
+debera de proporcionar. De igual forma se debe especificar un limite de números en el segundo recuadro. Adicionalmente se debera especificar un valor <code class="docutils literal"><span class="pre">a</span></code> , <code class="docutils literal"><span class="pre">c</span></code> y el valor del modulo o <code class="docutils literal"><span class="pre">m</span></code> respectivamente.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En caso de te llegaras a equivocar en uno de los parametros de control el mismo sistema te avisara con un anuncío similar a este</p>
+</div>
+<img alt="_images/alerta.png" src="_images/alerta.png" />
+<p>Una vez que hayas especificado todos los valores puedes hacer click en el bóton <strong>Generar números aleatorios</strong> a continuación aparecera algo así.</p>
+<img alt="_images/lineal.png" src="_images/lineal.png" />
+<p>En caso de querer las pruebas Chi o Kolmogorov respectivamente se pueden usar los apartados especificados donde:</p>
+<ul class="simple">
+<li>En la prueba Chi se pide el nivel de <code class="docutils literal"><span class="pre">significancia</span></code></li>
+<li>En la prueba de Kolmogorov se pide el tipo de <code class="docutils literal"><span class="pre">ajuste</span></code> y <code class="docutils literal"><span class="pre">significancia</span></code></li>
+</ul>
+</div>
+<div class="section" id="generador-congruencial-mixto-con-pruebas-de-hull-dobell">
+<h3><a class="toc-backref" href="#id8">Generador Congruencial Mixto con pruebas de HULL-DOBELL</a><a class="headerlink" href="#generador-congruencial-mixto-con-pruebas-de-hull-dobell" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para empezar a usar el <code class="docutils literal"><span class="pre">Generador</span> <span class="pre">Congruencial</span> <span class="pre">Mixto</span></code> este requiere usar una semilla aleatoria que el usuario
+debera de proporcionar. De igual forma se debe especificar un limite de números en el segundo recuadro. Adicionalmente se debera especificar un valor <code class="docutils literal"><span class="pre">a</span></code> , <code class="docutils literal"><span class="pre">c</span></code> y el valor del modulo o <code class="docutils literal"><span class="pre">m</span></code> respectivamente.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En caso de te llegaras a equivocar en uno de los parametros de control el mismo sistema te avisara con un anuncío similar a este</p>
+</div>
+<img alt="_images/alerta.png" src="_images/alerta.png" />
+<p>Una vez que hayas especificado todos los valores puedes hacer click en el bóton <strong>Generar números Aleatorios</strong>.</p>
+<p>En este caso en particular pueden existir dos escenarios. En caso de que no se cumplan las pruebas de HULL-DOBELL el programa enseñara
+una alerta como se muestra a continuación.</p>
+<img alt="_images/fracaso.png" src="_images/fracaso.png" />
+<p>Donde la alerta puede ser uno de los siguientes tres casos</p>
+<ul>
+<li><img alt="_images/1era.png" class="first" src="_images/1era.png" />
+</li>
+<li><img alt="_images/2nda.png" class="first" src="_images/2nda.png" />
+</li>
+<li><img alt="_images/3era.png" class="first" src="_images/3era.png" />
+</li>
+</ul>
+<p>En caso de que los números si pasen la prueba de HULL-DOBELL se mostrara una imágen a continuación como esta:</p>
+<img alt="_images/dobel.png" src="_images/dobel.png" />
+<p>En caso de querer las pruebas Chi o Kolmogorov respectivamente se pueden usar los apartados especificados donde:</p>
+<ul class="simple">
+<li>En la prueba Chi se pide el nivel de <code class="docutils literal"><span class="pre">significancia</span></code></li>
+<li>En la prueba de Kolmogorov se pide el tipo de <code class="docutils literal"><span class="pre">ajuste</span></code> y <code class="docutils literal"><span class="pre">significancia</span></code></li>
+</ul>
+</div>
+<div class="section" id="generador-multiplicativo">
+<h3><a class="toc-backref" href="#id9">Generador Multiplicativo</a><a class="headerlink" href="#generador-multiplicativo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para empezar a usar el <code class="docutils literal"><span class="pre">Generador</span> <span class="pre">Multiplicativo</span></code> este requiere usar una semilla aleatoria que el usuario
+debera de proporcionar. De igual forma se debe especificar un limite de números en el segundo recuadro. Adicionalmente se debera especificar un valor <code class="docutils literal"><span class="pre">a</span></code> y el valor del modulo o <code class="docutils literal"><span class="pre">m</span></code> respectivamente.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En caso de te llegaras a equivocar en uno de los parametros de control el mismo sistema te avisara con un anuncío similar a este</p>
+</div>
+<img alt="_images/alerta.png" src="_images/alerta.png" />
+<p>Una vez que hayas especificado todos los valores puedes hacer click en el bóton <strong>Generar números Aleatorios</strong>. Debera aparecer una pantalla a continuación como esta:</p>
+<img alt="_images/generador.png" src="_images/generador.png" />
+<p>En caso de querer las pruebas Chi o Kolmogorov respectivamente se pueden usar los apartados especificados donde:</p>
+<ul class="simple">
+<li>En la prueba Chi se pide el nivel de <code class="docutils literal"><span class="pre">significancia</span></code></li>
+<li>En la prueba de Kolmogorov se pide el tipo de <code class="docutils literal"><span class="pre">ajuste</span></code> y <code class="docutils literal"><span class="pre">significancia</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pruebas-de-bondad">
+<h2><a class="toc-backref" href="#id10">Pruebas de Bondad</a><a class="headerlink" href="#pruebas-de-bondad" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="chi-cuadrada">
+<h3><a class="toc-backref" href="#id11">Chi Cuadrada</a><a class="headerlink" href="#chi-cuadrada" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En cada una de las ventanas del sistema esta incluido el apartado para hacer las pruebas de <code class="docutils literal"><span class="pre">Chi</span> <span class="pre">Cuadrada</span></code>. En orden para activarlas
+es necesario primero haber generado los números aleatorios.</p>
+<p>La prueba Chi se puede medir con un:</p>
+<ul class="simple">
+<li>5% de significancia</li>
+<li>10% de significancia</li>
+</ul>
+<p>En cualquiera de los casos el valor se manifesta como una ventana en la parte superior del programa informando del resultado
+de la siguiente forma:</p>
+<ul>
+<li><img alt="_images/chi_si.png" class="first" src="_images/chi_si.png" />
+</li>
+<li><img alt="_images/chino.png" class="first" src="_images/chino.png" />
+</li>
+</ul>
+<p>Donde el primer número que enseña es el valor que se saco del promedio de la formula</p>
+<img alt="_images/chi-formula.png" src="_images/chi-formula.png" />
+<p>El segundo número es valor téorico dado por la tabla.</p>
+</div>
+<div class="section" id="kolmogorov-smirnov">
+<h3><a class="toc-backref" href="#id12">Kolmogorov-Smirnov</a><a class="headerlink" href="#kolmogorov-smirnov" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En cada una de las ventanas del sistema esta incluido el apartado para hacer las pruebas de <code class="docutils literal"><span class="pre">Kolmogorov-Smirnov</span></code>. En orden para activarlas
+es necesario primero haber generado los números aleatorios.</p>
+<p>La prueba Kolmogorov-Smirnov se puede medir con un:</p>
+<ul>
+<li><p class="first">5% de significancia</p>
+<blockquote>
+<div><p>1-. Ajuste</p>
+<p>2-. Sin Ajuste</p>
+</div></blockquote>
+</li>
+<li><p class="first">10% de significancia</p>
+<blockquote>
+<div><p>1-. Ajuste</p>
+<p>2-. Sin Ajuste</p>
+</div></blockquote>
+</li>
+</ul>
+<p>En cualquiera de los casos el valor se manifesta como una ventana en la parte superior del programa informando del resultado
+de la siguiente forma:</p>
+<ul>
+<li><img alt="_images/si-kol.png" class="first" src="_images/si-kol.png" />
+</li>
+<li><img alt="_images/no_kolm.png" class="first" src="_images/no_kolm.png" />
+</li>
+</ul>
+<p>Donde el primer número que enseña es el valor que se saco del maximo entre estas dos formulas</p>
+<img alt="_images/kolm.png" src="_images/kolm.png" />
+<p>El segundo número es valor téorico dado por la tabla.</p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id13">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Cendeja, Leopoldo. “Pruebas De Bondad De Ajuste.” Metodos Cuantitativos y de Simulación. 7 Mar. 2018, CDMX, ITESM CCM.</li>
+<li>UMNG. “Tabla 1. Distribución Chi-Cuadrado x2.” Facultad De Estudios a Distancia, UMNG, virtual.umng.edu.co/distancia/ecosistema/ovas/esp_alt_ger/teoria_de_las_decisiones_gerenciales/unidad_2/medios/documentacion/p7h3.php.</li>
+<li>Zaiontz, Charles. “Kolmogorov-Smirnov Table.” Real Statistics Using Excel , Wordpress, www.real-statistics.com/statistics-tables/kolmogorov-smirnov-table/.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="flujo.html" class="btn btn-neutral" title="Diagramas de Flujo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Héctor Flores, Gustavo Méndez, Alfonso Ledezma.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'es',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
